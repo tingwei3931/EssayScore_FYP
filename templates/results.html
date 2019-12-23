@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>Submission Results</title>
+
+  <link href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round" rel="stylesheet">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <!-- Bootstrap core CSS -->
+  <link href="../static/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Datatable.js CSS -->
+  <link href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css" rel="stylesheet">
+
+  <!-- Custom styles for this template -->
+  <link href="../static/css/heroic-features.css" rel="stylesheet">
+  <style type="text/css">
+    body {
+		  font-family: 'Varela Round', sans-serif;
+	  }
+    .modal-login {
+    width: 350px;
+    }
+    .modal-login .modal-content {
+    padding: 20px;
+    border-radius: 5px;
+    border: none;
+    }
+    .modal-login .modal-header {
+        border-bottom: none;
+    position: relative;
+        justify-content: center;
+    }
+    .modal-login .close {
+    position: absolute;
+        top: -10px;
+        right: -10px;
+    }
+    .modal-login h4 {
+        color: #636363;
+        text-align: center;
+    font-size: 26px;
+    margin-top: 0;
+    }     
+    .modal-login .modal-content {
+      color: #999;
+      border-radius: 1px;
+      margin-bottom: 15px;
+      background: #fff;
+      border: 1px solid #f3f3f3;
+      box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+      padding: 25px;
+    }
+    .modal-login .form-group {
+      margin-bottom: 20px;
+    }
+    .modal-login label {
+      font-weight: normal;
+      font-size: 13px;
+    }
+    .modal-login .form-control {
+      min-height: 38px;
+      padding-left: 5px;
+      box-shadow: none !important;
+      border-width: 0 0 1px 0;
+      border-radius: 0;
+    }
+    .modal-login .form-control:focus {
+      border-color: #ccc;
+    }
+    .modal-login .input-group-addon {
+      max-width: 42px;
+      text-align: center;
+      background: none;
+      border-width: 0 0 1px 0;
+      padding-left: 5px;
+      border-radius: 0;
+    }
+    .modal-login .btn {        
+      font-size: 16px;
+      font-weight: bold;
+      background: #19aa8d;
+      border-radius: 3px;
+      border: none;
+      min-width: 140px;
+      outline: none !important;
+    }
+    .modal-login .btn:hover, .modal-login .btn:focus {
+      background: #179b81;
+    }
+    .modal-login .hint-text {
+      text-align: center;
+      padding-top: 5px;
+      font-size: 13px;
+    }
+    .modal-login .modal-footer {
+      color: #999;
+      border-color: #dee4e7;
+      text-align: center;
+      margin: 0 -25px -25px;
+      font-size: 13px;
+      justify-content: center;
+    }
+    .modal-login a {
+      color: #fff;
+      text-decoration: underline;
+    }
+    .modal-login a:hover {
+      text-decoration: none;
+    }
+    .modal-login a {
+      color: #19aa8d;
+      text-decoration: none;
+    }	
+    .modal-login a:hover {
+      text-decoration: underline;
+    }
+    .modal-login .fa {
+      font-size: 21px;
+    }
+    .trigger-btn {
+      display: inline-block;
+      margin: 100px auto;
+    }
+    .clickable-row {
+      cursor: pointer;
+    }
+    .jumbotron {
+      padding: 2rem 2rem;
+    }
+    mark {
+      background-color: red;
+      color: black;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="#">EssayScore</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item ">
+            <a class="nav-link active" href="#" >Welcome, {{ email }}</a>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href='/dashboard'>Back to dashboard</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/logout">Logout</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <div class="container">
+    <div class="container">
+      {% include 'messages.html' %}
+      <h1 style="padding-top: 20px; padding-bottom: 10px;">Submission Results:</h1>
+        {% if result.score_obtained > result.max_score//2 %}
+        <div class="jumbotron" style="background-color:#8fc761; border-style:solid; border-color:#2c9e2c; border-width:10px; ">
+            <h1 class="display-4">Congratulations!</h1>
+          <p class="lead">Your submitted essay scored <b>{{ result.score_obtained | round(2) }}</b> out of {{ result.max_score }} marks. </p>
+        </div>
+        {% else %}
+        <div class="jumbotron" style="background-color:#d9534f; border-style:solid; border-color:#bd1610; border-width:10px;">
+            <h1 class="display-4">Uh Oh. Try Again!</h1>
+          <p class="lead">Your submitted essay scored <b>{{ result.score_obtained | round(2) }}</b> out of {{ result.max_score }} marks. </p>
+        </div>
+        {% endif %}
+    </div>
+    <p><b> Here are your submission details: </b></p>
+    <table class="table table-striped table-hover">
+      <tbody>
+        <tr>
+          <th style="color: #fff;background-color: #343a40;border-color: #454d55; width:200px;">Time of Submission: </th>
+          <td>{{ result.timestamp.strftime('%Y-%m-%d %H:%M:%S') }}</td>
+        </tr>
+        <tr>
+          <th style="color: #fff;background-color: #343a40;border-color: #454d55; width:200px;">Essay Prompt:</th>
+          <td>{{ result.topic }}</td>
+        </tr>
+        <tr>
+          <th style="color: #fff;background-color: #343a40;border-color: #454d55; width:200px;">Score Obtained:</th>
+          <td>{{ result.score_obtained | round(2) }}</td>
+        </tr>
+        <tr>
+          <th style="color: #fff;background-color: #343a40;border-color: #454d55; width:200px;">Maximum Score: </th>
+          <td>{{ result.max_score }} </td>
+        </tr>
+        <tr>
+          <th style="color: #fff;background-color: #343a40;border-color: #454d55; width:200px;">Submitted Essay: </th>
+          <td>
+            <p> 
+            {% for word in result.text.split() %}
+              {% set word_cleaned = word.replace(',', '') %}
+              {% if word_cleaned in spelling.keys() %}
+              <mark> {{ word }} </mark>
+              {% else %}
+                {{ word }} 
+              {% endif %}
+            {% endfor %}
+            </p>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    {% if spelling|length %}
+      <p><b> Spelling errors found in the essay: </b></p>
+      <table class="table table-striped table-hover">
+          <thead class="thead-dark">
+            <tr>
+              <th scope="col">Spelling Errors Found </th>
+              <th scope="col">Recommended Correction</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for error in spelling %}
+            <tr>
+              <td>{{ error }}</td>
+              <td>{{ ', '.join(spelling[error]) }}</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+    {% endif %}
+  </div>
+  <!-- Footer -->
+  <footer class="py-5 bg-dark">
+    <div class="container">
+      <p class="m-0 text-center text-white">Copyright &copy; EssayScore 2019.</p>
+    </div>
+    <!-- /.container -->
+  </footer>
+
+  <!-- Bootstrap core JavaScript -->
+  <script src="../static/vendor/jquery/jquery.min.js"></script>
+  <script src="../static/vendor/bootstrap/js/bootstrap.bundle.min.js"></script> 
+
+  <!-- Firebase Configuration -->
+  <!-- The core Firebase JS SDK is always required and must be listed first -->
+  <script src="/__/firebase/7.2.0/firebase-app.js"></script>
+
+  <!-- Add SDKs for Firebase products that you want to use
+      https://firebase.google.com/docs/web/setup#available-libraries -->
+  <script src="/__/firebase/7.2.0/firebase-analytics.js"></script>
+  <script src="/__/firebase/7.2.0/firebase-auth.js"></script>
+  <script src="/__/firebase/7.2.0/firebase-firestore.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <!-- Initialize Firebase -->
+  <script src="/__/firebase/init.js"></script>
+  <script src="http://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+</body>
+
+</html>

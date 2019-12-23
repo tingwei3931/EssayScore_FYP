@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>Dashboard</title>
+
+  <link href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round" rel="stylesheet">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <!-- Bootstrap core CSS -->
+  <link href="../static/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Dropzone CSS -->
+  <link rel="stylesheet" href="https://rawgit.com/enyo/dropzone/master/dist/dropzone.css">
+
+
+  <!-- Custom styles for this template -->
+  <link href="../static/css/heroic-features.css" rel="stylesheet">
+  <style type="text/css">
+    .jumbotron {
+      background-image: url("../static/img/coverphoto.jpg") !important;
+      background-size: cover;
+    }
+
+    body {
+		  font-family: 'Varela Round', sans-serif;
+	  }
+	  .modal-login {
+	  	width: 350px;
+	  }
+	  .modal-login .modal-content {
+	  	padding: 20px;
+	  	border-radius: 5px;
+	  	border: none;
+	  }
+	  .modal-login .modal-header {
+		  border-bottom: none;
+      position: relative;
+		  justify-content: center;
+	  }
+	  .modal-login .close {
+      position: absolute;
+		  top: -10px;
+		  right: -10px;
+	  }
+	  .modal-login h4 {
+		  color: #636363;
+		  text-align: center;
+	  	font-size: 26px;
+	  	margin-top: 0;
+	  }     
+    .modal-login .modal-content {
+      color: #999;
+      border-radius: 1px;
+      margin-bottom: 15px;
+      background: #fff;
+      border: 1px solid #f3f3f3;
+      box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+      padding: 25px;
+    }
+    .modal-login .form-group {
+      margin-bottom: 20px;
+    }
+    .modal-login label {
+      font-weight: normal;
+      font-size: 13px;
+    }
+    .modal-login .form-control {
+      min-height: 38px;
+      padding-left: 5px;
+      box-shadow: none !important;
+      border-width: 0 0 1px 0;
+      border-radius: 0;
+    }
+    .modal-login .form-control:focus {
+      border-color: #ccc;
+    }
+    .modal-login .input-group-addon {
+      max-width: 42px;
+      text-align: center;
+      background: none;
+      border-width: 0 0 1px 0;
+      padding-left: 5px;
+      border-radius: 0;
+    }
+    .modal-login .btn {        
+      font-size: 16px;
+      font-weight: bold;
+      background: #19aa8d;
+      border-radius: 3px;
+      border: none;
+      min-width: 140px;
+      outline: none !important;
+    }
+    .modal-login .btn:hover, .modal-login .btn:focus {
+      background: #179b81;
+    }
+    .modal-login .hint-text {
+      text-align: center;
+      padding-top: 5px;
+      font-size: 13px;
+    }
+    .modal-login .modal-footer {
+      color: #999;
+      border-color: #dee4e7;
+      text-align: center;
+      margin: 0 -25px -25px;
+      font-size: 13px;
+      justify-content: center;
+    }
+    .modal-login a {
+      color: #fff;
+      text-decoration: underline;
+    }
+    .modal-login a:hover {
+      text-decoration: none;
+    }
+    .modal-login a {
+      color: #19aa8d;
+      text-decoration: none;
+    }	
+    .modal-login a:hover {
+      text-decoration: underline;
+    }
+    .modal-login .fa {
+      font-size: 21px;
+    }
+    .trigger-btn {
+      display: inline-block;
+      margin: 100px auto;
+    }
+    .clickable-row {
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="#">EssayScore</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item ">
+            <a class="nav-link active" href="#" >Welcome, {{ email }}</a>
+            </a>
+          </li>
+          <li class="nav-item">
+            <!-- Button HTML (to Trigger Modal) -->
+	          <a href="/view_submissions" class="nav-link">View Past Submissions</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/logout">Logout</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Page Content -->
+  <div class="container">
+      <div class="container" style="padding-top: 15px;">
+        {% include 'messages.html' %}
+      </div>
+      {% if topic == '1'%}
+        <h2> Essay Topic {{ topic }}: Persuasive/Narrative/Expository essay</h2>
+        {% include 'essay_1.html' %}
+      {% elif topic == '2'%}
+        <h2> Essay Topic {{ topic }}: Persuasive/Narrative/Expository essay</h2>
+        {% include 'essay_2.html' %}
+      {% elif topic == '3'%}
+        <h2> Essay Topic {{ topic }}: Source dependent responses essay</h2>
+        {% include 'essay_3.html' %}
+      {% elif topic == '4'%}
+        <h2> Essay Topic {{ topic }}: Source dependent responses essay</h2>
+        {% include 'essay_4.html' %}
+      {% elif topic == '5'%}
+        <h2> Essay Topic {{ topic }}: Source dependent responses essay</h2>
+        {% include 'essay_5.html' %}
+      {% elif topic == '6'%}
+         <h2> Essay Topic {{ topic }}: Source dependent responses essay</h2>
+        {% include 'essay_6.html' %}
+      {% elif topic == '7'%}
+        <h2> Essay Topic {{ topic }}: Persuasive/Narrative/Expository essay</h2>
+        {% include 'essay_7.html' %}
+      {% elif topic == '8'%}
+        <h2> Essay Topic {{ topic }}: Persuasive/Narrative/Expository essay</h2>
+        {% include 'essay_8.html' %}
+      {% endif %}
+      <div class='demo'style="font-weight:bold; color:black; float:left">Upload your essay(s) here:</div>
+      <br/>
+
+        <div class="test">
+            <!-- Change /upload-essay to your upload address -->
+            <form action="/upload_essay" class="dropzone" method="post" id="myDropzone" style="text-align: center;">
+              <!--input type="file" name="file" input-file/-->            
+            </form>
+                <div id="loader" style="top:50px;opacity:0;transition-property: opacity; transition-duration: .5s;"> Loading...
+                </div>
+            <!-- INPUT TEXT -->
+            <!--        <div id="text-input">-->
+            <form action="/backend_grade" method="post">
+              <div style="color:black; font-weight:bold; "><span class="demo">Or </span>enter an essay:</div>
+              <!--        <textarea id="test_text" rows="10" cols="80"></textarea>-->
+              <textarea id="essay_text" style="width: 100%;height: 300px;" name="essay" spellcheck="true">The cat was playing in the garden.
+              </textarea>
+              <br>
+              <button id="submit_text_btn" class="btn btn-primary btn-block" type="submit"> Grade Essay!</button>
+              <div class="container" style="padding-bottom:50px"></div>
+            </form>
+        </div>
+    </div>    
+  <!-- Footer -->
+  <footer class="py-5 bg-dark">
+    <div class="container">
+      <p class="m-0 text-center text-white">Copyright &copy; EssayScore 2019.</p>
+    </div>
+    <!-- /.container -->
+  </footer>
+
+  <!-- Bootstrap core JavaScript -->
+  <script src="../static/vendor/jquery/jquery.min.js"></script>
+  <script src="../static/vendor/bootstrap/js/bootstrap.bundle.min.js"></script> 
+
+  <!-- Firebase Configuration -->
+  <!-- The core Firebase JS SDK is always required and must be listed first -->
+  <script src="/__/firebase/7.2.0/firebase-app.js"></script>
+
+  <!-- TODO: Add SDKs for Firebase products that you want to use
+      https://firebase.google.com/docs/web/setup#available-libraries -->
+  <script src="/__/firebase/7.2.0/firebase-analytics.js"></script>
+  <script src="/__/firebase/7.2.0/firebase-auth.js"></script>
+  <script src="/__/firebase/7.2.0/firebase-firestore.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <!-- Initialize Firebase -->
+  <script src="/__/firebase/init.js"></script>
+
+  <!-- Dropzone.js for drag and drop features -->
+  <script src="https://rawgit.com/enyo/dropzone/master/dist/dropzone.js"></script>
+  <!-- Custom Javascripts -->
+  <script>
+    window.setTimeout(function() {
+      $(".alert").fadeTo(500, 0).slideUp(500, function(){
+        $(this).remove(); 
+      });
+    }, 2000);
+
+    Dropzone.options.myDropzone = {
+      maxFiles: 1,
+      addRemoveLinks: true,
+      acceptedFiles: ['application/vnd.ms-excel','application/vnd.openxmlformats-officedocument.wordprocessingml.document',
+      'application/docx', 'text/plain',
+      'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'].join(','),
+      accept: function(file, done) {
+        console.log("file uploaded");
+        done();
+      },
+      init: function() {
+        // populate inner html of text area with the text read. 
+        textArea = document.getElementById('essay_text');
+        this.on("addedfile", function(file) { 
+          //alert("Added file.");
+          const reader = new FileReader();
+          reader.onload = () => {
+            const fileAsTextString = reader.result;
+            if (textArea) {
+              textArea.innerHTML = fileAsTextString;
+            }
+          };
+          reader.onabort = () => console.log('file reading was aborted.');
+          reader.onerror = () => console.log('file reading has errors.');
+          
+          reader.readAsText(file, 'UTF-8');
+        }),
+        this.on("maxfilesexceeded", function(file) {
+          alert("Can only upload one essay per submission.");
+          this.removeAllFiles();
+          this.addFile(file);
+        }),
+        this.on('removedfile', function () {
+          textArea.innerHTML = "";
+        })
+      }
+    }
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>EssayScore - Essay Grading With Instant Feedback
+</title>
+
+  <link href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round" rel="stylesheet">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <!-- Bootstrap core CSS -->
+  <link href="../static/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+
+  <!-- Custom styles for this template -->
+  <link href="../static/css/heroic-features.css" rel="stylesheet">
+  <style type="text/css">
+    .jumbotron {
+      background-image: url('../static/img/coverphoto.jpg');
+      background-size: cover;
+    }
+
+    body {
+		  font-family: 'Varela Round', sans-serif;
+	  }
+	  .modal-login {
+	  	width: 350px;
+	  }
+	  .modal-login .modal-content {
+	  	padding: 20px;
+	  	border-radius: 5px;
+	  	border: none;
+	  }
+	  .modal-login .modal-header {
+		  border-bottom: none;
+      position: relative;
+		  justify-content: center;
+	  }
+	  .modal-login .close {
+      position: absolute;
+		  top: -10px;
+		  right: -10px;
+	  }
+	  .modal-login h4 {
+		  color: #636363;
+		  text-align: center;
+	  	font-size: 26px;
+	  	margin-top: 0;
+	  }     
+    .modal-login .modal-content {
+      color: #999;
+      border-radius: 1px;
+      margin-bottom: 15px;
+      background: #fff;
+      border: 1px solid #f3f3f3;
+      box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+      padding: 25px;
+    }
+    .modal-login .form-group {
+      margin-bottom: 20px;
+    }
+    .modal-login label {
+      font-weight: normal;
+      font-size: 13px;
+    }
+    .modal-login .form-control {
+      min-height: 38px;
+      padding-left: 5px;
+      box-shadow: none !important;
+      border-width: 0 0 1px 0;
+      border-radius: 0;
+    }
+    .modal-login .form-control:focus {
+      border-color: #ccc;
+    }
+    .modal-login .input-group-addon {
+      max-width: 42px;
+      text-align: center;
+      background: none;
+      border-width: 0 0 1px 0;
+      padding-left: 5px;
+      border-radius: 0;
+      padding-top: 7px;
+    }
+    .modal-login .btn {        
+      font-size: 16px;
+      font-weight: bold;
+      background: #19aa8d;
+      border-radius: 3px;
+      border: none;
+      min-width: 140px;
+      outline: none !important;
+    }
+    .modal-login .btn:hover, .modal-login .btn:focus {
+      background: #179b81;
+    }
+    .modal-login .hint-text {
+      text-align: center;
+      padding-top: 5px;
+      font-size: 13px;
+    }
+    .modal-login .modal-footer {
+      color: #999;
+      border-color: #dee4e7;
+      text-align: center;
+      margin: 0 -25px -25px;
+      font-size: 13px;
+      justify-content: center;
+    }
+    .modal-login a {
+      color: #fff;
+      text-decoration: underline;
+    }
+    .modal-login a:hover {
+      text-decoration: none;
+    }
+    .modal-login a {
+      color: #19aa8d;
+      text-decoration: none;
+    }	
+    .modal-login a:hover {
+      text-decoration: underline;
+    }
+    .modal-login .fa {
+      font-size: 21px;
+    }
+    .trigger-btn {
+      display: inline-block;
+      margin: 100px auto;
+    }
+    .center {
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      margin-top: 15px;
+      width: 50%;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="#">EssayScore</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="#">Home
+              <span class="sr-only">(current)</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <!-- Button HTML (to Trigger Modal) -->
+	          <a href="#login" class="nav-link" data-toggle="modal">Login</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#register" data-toggle="modal">Register</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Page Content -->
+  <div class="container">
+    <div class="container" style="padding-top: 15px;">
+      {% include 'messages.html' %}
+    </div>
+      <!-- Jumbotron Header -->
+    <header class="jumbotron my-4" style="color:black;">
+      <h1 class="display-3">EssayScore</h1>
+      <p class="lead" style="font-weight:bold;">Grade essays instantly with the power of Artificial Intelligence! </p>
+      <a href="#login" class="btn btn-primary btn-lg" class="nav-link" data-toggle="modal" data-dismiss="modal">Get Started!</a>
+    </header>
+
+    <!-- Page Features -->
+    <div class="row text-center">
+
+      <div class="col-lg-4 col-md-6 mb-4">
+        <div class="card h-100">
+          <img class="card-img-top center" src="../static/img/checklist.png" alt="">
+          <div class="card-body">
+            <h4 class="card-title">Get Instant Score</h4>
+            <p class="card-text">Essays submitted will be graded through the neural network model for evaluation purposes.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-4 col-md-6 mb-4">
+        <div class="card h-100">
+          <img class="card-img-top center" src="../static/img/analytics.png" alt="">
+          <div class="card-body">
+            <h4 class="card-title">Check For Spelling Errors in Your Essays </h4>
+            <p class="card-text"> Check the essay for spelling errors and recommend corrections.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-4 col-md-6 mb-4">
+        <div class="card h-100">
+          <img class="card-img-top center" src="../static/img/homework.png" alt="">
+          <div class="card-body">
+            <h4 class="card-title">View Past Submissions</h4>
+            <p class="card-text"> View past essay submissions to improve essay writing skills.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- /.row -->
+
+  </div>
+  <!-- /.container -->
+  <!-- Login Modal HTML -->
+  <div id="login" class="modal fade">
+    <div class="modal-dialog modal-login">
+      <div class="modal-content">
+        <div class="modal-header">				
+          <h4 class="modal-title">Sign In</h4>
+                  <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        </div>
+        <div class="modal-body">
+          <form action="/login" method="post">
+            <div class="form-group">
+              <div class="input-group">
+                <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                <input type="email" class="form-control" name="email" placeholder="Email" required="required">
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="input-group">
+                <span class="input-group-addon"><i class="fa fa-lock"></i></span>
+                <input type="password" class="form-control" name="password" placeholder="Password" required="required">
+              </div>
+            </div>
+            <div class="form-group">
+              <button type="submit" class="btn btn-primary btn-block btn-lg">Sign In</button>
+            </div>
+            <p class="hint-text"><a href="#">Forgot Password?</a></p>
+          </form>
+        </div>
+        <div class="modal-footer">Don't have an account? 
+          <a href="#register" data-toggle="modal" data-dismiss="modal"> Create one</a></div>
+      </div>
+    </div>
+  </div>
+  <!-- Register Modal HTML -->
+  <div id="register" class="modal fade">
+    <div class="modal-dialog modal-login">
+      <div class="modal-content">
+        <div class="modal-header">				
+          <h4 class="modal-title">Register</h4>
+                  <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+      </div>
+        <p>Please fill in this form to create an account!</p>
+		     <div class="modal-body">
+          <form action="/register" method="post">
+            <div class="form-group">
+              <div class="input-group">
+                <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                <input type="text" class="form-control" name="username" placeholder="Username" required="required">
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="input-group">
+                <span class="input-group-addon"><i class="fa fa-paper-plane"></i></span>
+                <input type="email" class="form-control" name="email" placeholder="Email Address" required="required">
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="input-group">
+                <span class="input-group-addon"><i class="fa fa-lock"></i></span>
+                <input type="password" class="form-control" name="password" placeholder="Password" required="required">
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="input-group">
+                <span class="input-group-addon"><i class="fa fa-lock"></i></span>
+                <input type="password" class="form-control" name="cfm_password" placeholder="Confirm Password" required="required">
+              </div>
+            </div>
+            <div class="form-group">
+              <button type="submit" class="btn btn-primary btn-block btn-lg">Register</button>
+            </div>
+          </form>
+        </div>
+        <div class="text-center">Already have an account?
+        <a href="#login" data-toggle="modal" data-dismiss="modal"> Login here</a></div>
+      </div>
+    </div>
+</div>
+</div>    
+  <!-- Footer -->
+  <footer class="py-5 bg-dark">
+    <div class="container">
+      <p class="m-0 text-center text-white">Copyright &copy; EssayScore 2019.</p>
+    </div>
+    <!-- /.container -->
+  </footer>
+
+  <!-- Bootstrap core JavaScript -->
+  <script src="../static/vendor/jquery/jquery.min.js"></script>
+  <script src="../static/vendor/bootstrap/js/bootstrap.bundle.min.js"></script> 
+
+  <!-- Firebase Configuration -->
+  <!-- The core Firebase JS SDK is always required and must be listed first -->
+  <script src="/__/firebase/7.2.0/firebase-app.js"></script>
+
+  <!-- TODO: Add SDKs for Firebase products that you want to use
+      https://firebase.google.com/docs/web/setup#available-libraries -->
+  <script src="/__/firebase/7.2.0/firebase-analytics.js"></script>
+  <script src="/__/firebase/7.2.0/firebase-auth.js"></script>
+  <script src="/__/firebase/7.2.0/firebase-firestore.js"></script>
+
+  <!-- Initialize Firebase -->
+  <script src="/__/firebase/init.js"></script>
+
+  <!-- Custom Javascript -->
+  <script>
+      window.setTimeout(function() {
+        $(".alert").fadeTo(500, 0).slideUp(500, function(){
+          $(this).remove(); 
+        });
+      }, 2000);
+  </script>
+</body>
+
+</html>
