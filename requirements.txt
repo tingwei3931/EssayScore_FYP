@@ -66,7 +66,6 @@ pyspellchecker==0.5.2
 python-docx==0.8.10
 python-jwt==2.0.1
 pytz==2019.3
-pywin32==225
 PyYAML==5.1.2
 requests==2.22.0
 requests-toolbelt==0.9.1
