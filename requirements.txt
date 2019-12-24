@@ -2,7 +2,6 @@ absl-py==0.8.1
 astor==0.8.0
 astroid==2.3.2
 backports.csv==1.0.7
-beautifulsoup4==4.8.1
 CacheControl==0.12.5
 cachetools==3.1.1
 certifi==2019.9.11
@@ -49,7 +48,6 @@ MarkupSafe==1.1.1
 mccabe==0.6.1
 more-itertools==7.2.0
 msgpack==0.6.2
-mysqlclient==1.4.4
 nltk==3.4.5
 numpy==1.17.3
 oauth2client==4.1.2
@@ -60,7 +58,6 @@ protobuf==3.10.0
 pyasn1==0.4.7
 pyasn1-modules==0.2.7
 pycryptodome==3.9.0
-pylint==2.4.3
 Pyrebase4==4.3.0
 pyspellchecker==0.5.2
 python-docx==0.8.10
@@ -75,9 +72,6 @@ six==1.12.0
 sortedcontainers==2.1.0
 soupsieve==1.9.5
 tempora==1.14.1
-tensorboard==1.14.0
-tensorflow-estimator==1.14.0
-tensorflow-gpu==1.14.0
 termcolor==1.1.0
 typed-ast==1.4.0
 uritemplate==3.0.0

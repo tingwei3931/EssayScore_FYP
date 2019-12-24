@@ -2,6 +2,6 @@ prompt4.txt
 test.txt
 test2.txt
 .firebaserc
-.venv
-.vscode
-.git
+.venv/
+.vscode/
+.git/
