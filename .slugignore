@@ -5,3 +5,4 @@ test2.txt
 .venv/
 .vscode/
 .git/
+__pycache/*
