@@ -65,3 +65,5 @@ node_modules/
 .env
 .venv
 .vscode
+__pycache__/*
+.slugignore
