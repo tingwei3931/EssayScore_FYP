@@ -36,10 +36,19 @@ in the root folder.
 ## Sample Screenshots
 
 ![image](https://user-images.githubusercontent.com/16443687/71521684-b4e50900-28fc-11ea-832f-9022b75975f5.png)
+
+
 ![image](https://user-images.githubusercontent.com/16443687/71522253-d941e500-28fe-11ea-9313-439b42ce6a59.png)
+
+
 ![image](https://user-images.githubusercontent.com/16443687/71522280-f5de1d00-28fe-11ea-9ab5-93a01d483029.png)
+
+
 ![image](https://user-images.githubusercontent.com/16443687/71522342-481f3e00-28ff-11ea-8aa1-e038d47be010.png)
+
+
 ![image](https://user-images.githubusercontent.com/16443687/71522403-8a487f80-28ff-11ea-96fc-a0714ce3ed8b.png)
+
 
 
 ## References 
